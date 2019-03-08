@@ -234,10 +234,11 @@ export default class MasonryList extends React.Component<Props, State> {
 
     const content = (
       <View style={styles.contentContainer}>
-        {this.state.columns.map(col =>
+        {this.state.columns.map((col, ind) =>
           <VirtualizedList
             {...props}
             ref={ref => (this._listRefs[col.index] = ref)}
+            listKey={`${props.listKey || 'masonryList'}_${ind}`}
             key={`$col_${col.index}`}
             data={col.data}
             getItemCount={this._getItemCount}
